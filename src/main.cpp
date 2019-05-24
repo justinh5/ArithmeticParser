@@ -10,8 +10,8 @@ int main() {
 
   char input[MAX_SIZE];
   char result[100];
-  Lexer l = new Lexer();
-  Parser p = new Parser(l);
+  Lexer lexar;
+  Parser p = Parser(lexar);
 
   do {
 

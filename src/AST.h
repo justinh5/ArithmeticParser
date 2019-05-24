@@ -13,7 +13,7 @@ class Expression {
 };
 
 
-class SUB: Expression {
+class SUB: public Expression {
 
   public:
     SUB();
@@ -24,7 +24,7 @@ class SUB: Expression {
 };
 
 
-class ADD: Expression {
+class ADD: public Expression {
 
   public:
     ADD();
@@ -35,7 +35,7 @@ class ADD: Expression {
 };
 
 
-class DIV: Expression {
+class DIV: public Expression {
 
   public:
     DIV();
@@ -46,7 +46,7 @@ class DIV: Expression {
 };
 
 
-class MUL: Expression {
+class MUL: public Expression {
 
   public:
     MUL();
@@ -57,12 +57,22 @@ class MUL: Expression {
 };
 
 
-class EXP: Expression {
+class EXP: public Expression {
 
   public:
     EXP();
 
   private:
-    Expression a;
-    Expression b;
+    Expression base;
+    Expression exponent;
+};
+
+
+class NUM: public Expression {
+
+  public:
+    NUM();
+
+  private:
+    double n;
 };
