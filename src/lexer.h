@@ -2,35 +2,22 @@
 #include <cstring>
 
 
-/*
 
-1  -
-2  +
-3  /
-4  *
-5  ^
+enum Token { START, SUB, ADD, DIV, MUL, EXP, NUM };
 
 
-*/
-
-class Token
-{
-  public:
-    Token();
-
-  private:
-    int value;
 
 
-};
-
-
-class Lexer
-{
+class Lexer {
 
   public:
     Lexer();
 
+    void source(char * input);
+    Token getToken();
+    void nextToken();
+
   private:
+    char * input;
     Token token;
 };
