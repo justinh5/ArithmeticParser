@@ -2,13 +2,12 @@
 
 
 
-class Expression
-{
+class Expression {
 
   public:
     Expression();
-
     virtual ~Expression();
+
     virtual double evaluate() = 0;
 
   private:
@@ -17,75 +16,75 @@ class Expression
 };
 
 
-class SUB: public Expression
-{
+class Sub: public Expression {
 
   public:
-    SUB();
+    Sub(Expression left, Expression right);
+
     double evaluate();
 
   private:
-    Expression a;
-    Expression b;
+    Expression * a;
+    Expression * b;
 };
 
 
-class ADD: public Expression
-{
+class Add: public Expression {
 
   public:
-    ADD();
+    Add(Expression left, Expression right);
+
     double evaluate();
 
   private:
-    Expression a;
-    Expression b;
+    Expression * a;
+    Expression * b;
 };
 
 
-class DIV: public Expression
-{
+class Div: public Expression {
 
   public:
-    DIV();
+    Div(Expression left, Expression right);
+
     double evaluate();
 
   private:
-    Expression a;
-    Expression b;
+    Expression * a;
+    Expression * b;
 };
 
 
-class MUL: public Expression {
+class Mul: public Expression {
 
   public:
-    MUL();
+    Mul(Expression left, Expression right);
+
     double evaluate();
 
   private:
-    Expression a;
-    Expression b;
+    Expression * a;
+    Expression * b;
 };
 
 
-class EXP: public Expression
-{
+class Exp: public Expression {
 
   public:
-    EXP();
+    Exp(Expression left, Expression right);
     double evaluate();
 
   private:
-    Expression base;
-    Expression exponent;
+    Expression * base;
+    Expression * exponent;
 };
 
 
-class NUM: public Expression
-{
+class Num: public Expression {
 
   public:
-    NUM();
+    Num(double value);
+    
     double evaluate();
 
   private:
