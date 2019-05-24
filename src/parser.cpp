@@ -1,4 +1,4 @@
 
 #include "parser.h"
 
-parser::parser() {}
+Parser::Parser(Lexer l): lexer(l) {}

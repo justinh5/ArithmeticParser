@@ -1,12 +1,13 @@
 
 #include "lexer.h"
+#include "AST.h"
 
-class parser
+class Parser
 {
 
   public:
-    parser();
+    Parser(Lexer l);
 
   private:
-    int y;
+    Lexer lexer;
 };

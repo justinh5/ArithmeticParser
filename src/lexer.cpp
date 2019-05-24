@@ -1,4 +1,5 @@
 
 #include "parser.h"
 
-lexer::lexer() {}
+
+Lexer::Lexer() {}

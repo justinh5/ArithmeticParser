@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cstring>
 
-class lexer
+class Lexer
 {
 
   public:
-    lexer();
+    Lexer();
 
   private:
     int y;
