@@ -4,12 +4,6 @@
 
 Source::Source(): input(0), position(0) {}
 
-
-Source::Source(const Source& s) {
-  input = new char[strlen(s.input) + 1];
-  position = strlen(s.input)-1;
-}
-
 Source::~Source() {
   delete [] input;
   input = NULL;
@@ -44,11 +38,6 @@ Lexer::Lexer(): source(0), c(0), lexeme(0), token(0) {}
 
 Lexer::Lexer(Source* s): c(0), lexeme(0), token(0) {
   source = s;
-}
-
-Lexer::Lexer(const Lexer& l) {
-  source = l.source;
-  c = lexeme = token = 0;
 }
 
 void Lexer::start() {
@@ -105,7 +94,7 @@ int Lexer::identify() {
     c = source->next_char();
     ++i;
   }
-  temp[i] = '\0';  // insert null terminator 
+  temp[i] = '\0';  // insert null terminator
   std::reverse(temp, &temp[strlen(temp)]);
   lexeme = atof(temp);  // char string to double
 

@@ -19,7 +19,6 @@ class Source {
 
   public:
     Source();
-    Source(const Source& s);
     ~Source();
 
     void read_source(char * input);
@@ -39,7 +38,6 @@ class Lexer {
   public:
     Lexer();
     Lexer(Source* s);
-    Lexer(const Lexer& l);   // copy constructor
 
     void start();
     int get_token();
