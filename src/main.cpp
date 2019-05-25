@@ -18,12 +18,11 @@ int main() {
     std::cin.getline(input, MAX_SIZE);
     source.read_source(input);    // feed new input to the source
     exit = strcmp(input, "exit") && strcmp(input, "quit");  // time to exit?
-    lexer.start();                // read in first char and token
-    std::cout << "= " << parser.expr() << "\n\n";
-
+    if(exit) {
+      lexer.start();    // read in first char and token
+      std::cout << "= " << parser.expr() << "\n\n";
+    }
   } while(exit);
-
-
 
   return 0;
 }

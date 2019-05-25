@@ -64,6 +64,7 @@ double Parser::term() {
         lexer->next_token();
       } else {
         std::cout << "Error! Missing open paren";
+        return 0;
       }
       return e;
     }
