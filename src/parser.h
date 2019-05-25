@@ -1,18 +1,17 @@
 
 #include "lexer.h"
-#include "AST.h"
 
 class Parser {
 
   public:
     Parser(Lexer* l);
 
-    Expression* expr();
-    Expression* add();
-    Expression* div();
-    Expression* mul();
-    Expression* exp();
-    Expression* atom();
+    double expr();
+    double add();
+    double div();
+    double mul();
+    double exp();
+    double term();
 
   private:
     Lexer * lexer;

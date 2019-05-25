@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include <stdlib.h>
+#include <math.h>
 
 const int MAX_SIZE = 500;
 
@@ -29,7 +29,6 @@ class Source {
   private:
     char * input;       // source input
     int position;       // current position in the input array
-    int end;            // length or ending position of the input array
 };
 
 

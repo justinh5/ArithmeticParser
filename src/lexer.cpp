@@ -7,8 +7,7 @@ Source::Source(): input(0), position(0) {}
 
 Source::Source(const Source& s) {
   input = new char[strlen(s.input) + 1];
-  position = 0;
-  end = 0;
+  position = strlen(s.input)-1;
 }
 
 Source::~Source() {
@@ -27,16 +26,15 @@ void Source::read_source(char * usr_input) {
   input = new char[strlen(usr_input) + 1];
   strcpy(input, usr_input);
 
-  // reset position back to the start and read in the first character
-  position = 0;
-  end = strlen(input);
+  // reset position back to the last character
+  position = strlen(input)-1;
 }
 
 int Source::next_char() {
 
-  if(position < end) {
+  if(position >= 0) {
     int next = input[position];
-    ++position;
+    --position;
     return next;
   }
   return 0;
@@ -107,7 +105,8 @@ int Lexer::identify() {
     c = source->next_char();
     ++i;
   }
-
+  temp[i] = '\0';  // insert null terminator 
+  std::reverse(temp, &temp[strlen(temp)]);
   lexeme = atof(temp);  // char string to double
 
   return NUM;

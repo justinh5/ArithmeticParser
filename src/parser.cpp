@@ -5,73 +5,71 @@ Parser::Parser(Lexer* l) {
   lexer = l;
 }
 
-
-
-Expression * Parser::expr() {
-  Expression * l = add();
+double Parser::expr() {
+  double l = add();
   if (lexer->get_token() == SUB) {
-      lexer->next_token();
-      return new Sub(l, expr());
+    lexer->next_token();
+    return expr() - l;
   }
   return l;
 }
 
-Expression * Parser::add() {
-  Expression * l = div();
+double Parser::add() {
+  double l = div();
   if (lexer->get_token() == ADD) {
-      lexer->next_token();
-      return new Add(l, expr());
+    lexer->next_token();
+    return expr() + l;
   }
   return l;
 }
 
-Expression * Parser::div() {
-  Expression * l = mul();
+double Parser::div() {
+  double l = mul();
   if (lexer->get_token() == DIV) {
-      lexer->next_token();
-      return new Div(l, expr());
+    lexer->next_token();
+    return expr() / l;
   }
   return l;
 }
 
-Expression * Parser::mul() {
-  Expression * l = exp();
+double Parser::mul() {
+  double l = exp();
   if (lexer->get_token() == MUL) {
-      lexer->next_token();
-      return new Mul(l, expr());
+    lexer->next_token();
+    return expr() * l;
   }
   return l;
 }
 
-Expression * Parser::exp() {
-  Expression * l = atom();
+double Parser::exp() {
+  double l = term();
   if (lexer->get_token() == EXP) {
-      lexer->next_token();
-      return new Exp(l, expr());
+    lexer->next_token();
+    return pow(expr(), l);
   }
   return l;
 }
 
-Expression * Parser::atom() {
+double Parser::term() {
   switch (lexer->get_token()) {
     case NUM: {
       double value = lexer->get_lexeme();
       lexer->next_token();
-      return new Num(value);
+      return value;
     }
-    case OPEN: {
+    case CLOSE: {
       lexer->next_token();
-      Expression * e = expr();
-      if (lexer->get_token() == ')') {
+      double e = expr();
+      if (lexer->get_token() == '(') {
         lexer->next_token();
       } else {
-        std::cout << "Error! Missing close paren";
+        std::cout << "Error! Missing open paren";
       }
       return e;
     }
     default: {
       std::cout << "Error!";
-      return NULL;
+      return 0;
     }
   }
 }
