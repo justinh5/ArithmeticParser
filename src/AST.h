@@ -1,5 +1,5 @@
 
-
+#include <math.h>
 
 
 class Expression {
@@ -19,7 +19,7 @@ class Expression {
 class Sub: public Expression {
 
   public:
-    Sub(Expression left, Expression right);
+    Sub(Expression * left, Expression * right);
 
     double evaluate();
 
@@ -32,7 +32,7 @@ class Sub: public Expression {
 class Add: public Expression {
 
   public:
-    Add(Expression left, Expression right);
+    Add(Expression * left, Expression * right);
 
     double evaluate();
 
@@ -45,7 +45,7 @@ class Add: public Expression {
 class Div: public Expression {
 
   public:
-    Div(Expression left, Expression right);
+    Div(Expression * left, Expression * right);
 
     double evaluate();
 
@@ -58,7 +58,7 @@ class Div: public Expression {
 class Mul: public Expression {
 
   public:
-    Mul(Expression left, Expression right);
+    Mul(Expression * left, Expression * right);
 
     double evaluate();
 
@@ -71,7 +71,8 @@ class Mul: public Expression {
 class Exp: public Expression {
 
   public:
-    Exp(Expression left, Expression right);
+    Exp(Expression * left, Expression * right);
+
     double evaluate();
 
   private:
@@ -84,7 +85,7 @@ class Num: public Expression {
 
   public:
     Num(double value);
-    
+
     double evaluate();
 
   private:

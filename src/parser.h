@@ -5,7 +5,7 @@
 class Parser {
 
   public:
-    Parser(Lexer l);
+    Parser(Lexer* l);
 
     Expression* expr();
     Expression* add();
@@ -15,5 +15,5 @@ class Parser {
     Expression* atom();
 
   private:
-    Lexer lexer;
+    Lexer * lexer;
 };

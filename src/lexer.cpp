@@ -4,6 +4,19 @@
 
 Source::Source(): input(0), position(0) {}
 
+
+Source::Source(const Source& s) {
+  input = new char[strlen(s.input) + 1];
+  position = 0;
+  end = 0;
+}
+
+Source::~Source() {
+  delete [] input;
+  input = NULL;
+}
+
+
 // Reads in a new source of raw characters.
 // First deletes the previous set of characters,
 // then copies in the new set from user input.
@@ -17,9 +30,6 @@ void Source::read_source(char * usr_input) {
   // reset position back to the start and read in the first character
   position = 0;
   end = strlen(input);
-  nextChar();
-
-  std::cout << '\n' << input << '\n';
 }
 
 int Source::next_char() {
@@ -32,8 +42,21 @@ int Source::next_char() {
   return 0;
 }
 
+Lexer::Lexer(): source(0), c(0), lexeme(0), token(0) {}
 
-Lexer::Lexer(Source s): source(s), c(0), lexeme(0), token(0) {}
+Lexer::Lexer(Source* s): c(0), lexeme(0), token(0) {
+  source = s;
+}
+
+Lexer::Lexer(const Lexer& l) {
+  source = l.source;
+  c = lexeme = token = 0;
+}
+
+void Lexer::start() {
+  c = source->next_char();
+  token = next_token();
+}
 
 
 // Read the input for the next token.
@@ -41,41 +64,48 @@ Lexer::Lexer(Source s): source(s), c(0), lexeme(0), token(0) {}
 int Lexer::next_token() {
 
   while(c == ' ' || c == '\t' || c == '\r') {
-    c = source.next_char();
+    c = source->next_char();
   }
 
   switch(c) {
     case '-':
-      return SUB;
+      c = source->next_char();
+      return token=SUB;
     case '+':
-      return ADD;
+      c = source->next_char();
+      return token=ADD;
     case '/':
-      return DIV;
+      c = source->next_char();
+      return token=DIV;
     case '*':
-      return MUL;
+      c = source->next_char();
+      return token=MUL;
     case '^':
-      return EXP;
+      c = source->next_char();
+      return token=EXP;
     case '(':
-      return OPEN;
+      c = source->next_char();
+      return token=OPEN;
     case ')':
-      return CLOSE;
+      c = source->next_char();
+      return token=CLOSE;
     default:
-      return identifier(c);
+      return token=identify();
   }
 }
 
 
 // Identify all digits for the current token.
 // Stop reading in characters when a space or ^ is encountered.
-int Lexer::identifier(char c) {
+int Lexer::identify() {
 
+  int i = 0;
   char temp[50];
-  strcpy(temp, c);
 
-  c = source.next_char();
-  while(c != '^' || c != ' ' || c != '\t' || c != '\r') {
-    strcat(temp, c);
-    c = source.next_char();
+  while((c > 47 && c < 58) || c == 46) {
+    temp[i] = c;
+    c = source->next_char();
+    ++i;
   }
 
   lexeme = atof(temp);  // char string to double
@@ -85,7 +115,7 @@ int Lexer::identifier(char c) {
 
 
 // Return the current token
-Token Lexer::get_token() {
+int Lexer::get_token() {
   return token;
 }
 
