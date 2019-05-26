@@ -1,23 +1,19 @@
 #include "parser.h"
 
-
-
-
-
+// Default constructor
 Lexer::Lexer(): source(0), c(0), lexeme(0), token(0) {}
 
 Lexer::Lexer(Source* s): c(0), lexeme(0), token(0) {
   source = s;
 }
 
+// Read in the first character and token before parsing
 void Lexer::start() {
   c = source->next_char();
   token = next_token();
 }
 
-
-// Read the input for the next token.
-// Can be any one of the enumerated types SUB, ADD, DIV, MUL, EXP, NUM
+// Read the input for the next token
 int Lexer::next_token() {
 
   while(c == ' ' || c == '\t' || c == '\r') {
@@ -51,33 +47,30 @@ int Lexer::next_token() {
   }
 }
 
-
 // Identify all digits for the current token.
-// Stop reading in characters when a space or ^ is encountered.
 int Lexer::identify() {
 
   int i = 0;
   char temp[50];
 
-  while((c > 47 && c < 58) || c == 46) {
+  while((c > 47 && c < 58) || c == 46) {   // append characters unit a non-digit is read
     temp[i] = c;
     c = source->next_char();
     ++i;
   }
-  temp[i] = '\0';  // insert null terminator
-  std::reverse(temp, &temp[strlen(temp)]);
-  lexeme = atof(temp);  // char string to double
+  temp[i] = '\0';                           // insert null terminator
+  std::reverse(temp, &temp[strlen(temp)]);  // reverse characters in temp
+  lexeme = atof(temp);                      // char string to double
 
   return NUM;
 }
-
 
 // Return the current token
 int Lexer::get_token() {
   return token;
 }
 
-// Return the current token
+// Return the current lexeme
 double Lexer::get_lexeme() {
   return lexeme;
 }
