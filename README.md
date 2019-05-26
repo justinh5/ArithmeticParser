@@ -1,28 +1,48 @@
 ## Arithmetic Parser
 
-A simple parser for arithmetic expressions.
+A simple parser for arithmetic expressions. Evaluates expressions from the command line given a string of characters (eg. "1-2+3*4/5").
 
-Source Input -> Lexer -> Parser
+There are three main components:
+
+Source -> Lexer -> Parser
+
+**Source** - Manages the input buffer of characters.
+<br>**Lexer** - Reads in characters from the source and outputs tokens. Tokens are read from right to left to maintain a left grouping. White space is skipped.
+<br>**Parser** - Reads tokens from the lexer using recursive descent parsing to follow the precedence and associativity of the CFG. It does not produce an AST data structure. Instead, the expressions are directly evaluated, starting from the leaves upwards.
 
 
-###Context-free Grammar
+### Context-free Grammar
 
-The CFG Follows PEMDAS order of operations and groups to the left, avoiding ambiguity.
+The following CFG describes all possible arithmetic strings that can be parsed. It uses PEMDAS order of operations and associates to the left.
 
-E -> E - G
-E -> G
+Expression -> Expression - Add
+<br>Expression -> Add
 
-G -> G + H
-G -> H
+Add -> Add + Div
+<br>Add -> Div
 
-J -> J / K
-J -> K
+Div -> Div / Mul
+<br>Div -> Mul
 
-K -> K * M
-K -> M
+Mul -> Mul * Exp
+<br>Mul -> Exp
 
-M -> M ^ A
-M -> A
+Exp -> Exp ^ Term
+<br>Exp -> Term
 
-A -> (E)
-A -> n
+Term -> (Expression)
+<br>Term -> n
+
+### Example
+
+Each of the following are valid input strings:
+
+9
+<br>9 + 9
+<br>9+9
+<br>9.33 - 10.44
+<br>6 - 3 - 2
+<br>(7*8) / (2-1)
+<br>5^8
+<br>(4/6+8)^(2^2)
+<br>(4-(6/2+1)-2-(3)+9+(4*5-6))
