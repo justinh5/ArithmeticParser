@@ -2,14 +2,13 @@
 
 
 
-
+// Default constructor
 Source::Source(): input(0), position(0) {}
 
 Source::~Source() {
   delete [] input;
   input = NULL;
 }
-
 
 // Reads in a new source of raw characters.
 // First deletes the previous set of characters,
@@ -25,6 +24,8 @@ void Source::read_source(char * usr_input) {
   position = strlen(input)-1;
 }
 
+// Returns the next character from the input buffer,
+// starting from index len(input)-1 to 0.
 int Source::next_char() {
 
   if(position >= 0) {
