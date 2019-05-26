@@ -1,10 +1,6 @@
 #include "parser.h"
 
 
-
-
-
-
 int main() {
 
   char input[MAX_SIZE];
@@ -17,7 +13,7 @@ int main() {
     std::cout << "Type an arithmetic expression to calculate: ";
     std::cin.getline(input, MAX_SIZE);
     source.read_source(input);    // feed new input to the source
-    exit = strcmp(input, "exit") && strcmp(input, "quit");  // time to exit?
+    exit = strcmp(input, "exit") && strcmp(input, "quit");
     if(exit) {
       lexer.start();    // read in first char and token
       std::cout << "= " << parser.expr() << "\n\n";
