@@ -1,6 +1,8 @@
 
 #include "parser.h"
 
+Parser::Parser(): lexer(0) {}
+
 Parser::Parser(Lexer* l) {
   lexer = l;
 }
