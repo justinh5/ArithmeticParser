@@ -11,7 +11,7 @@ Source -> Lexer -> Parser
 <br>**Parser** - Reads tokens from the lexer using recursive descent parsing to follow the precedence and associativity of the CFG. It produces an AST data structure, where the expression it represents can be evaluated.
 
 
-### Context-free Grammar
+## Context-free Grammar
 
 The following CFG describes all possible arithmetic strings that can be parsed. It uses PEMDAS order of operations and associates to the left. For an example, a chain of minus operations would be evaluated like (((((9-8)-7)-6)-5)).
 
@@ -33,7 +33,7 @@ Exp -> Exp ^ Term
 Term -> (Expression)
 <br>Term -> n
 
-### Examples
+## Examples
 
 Each of the following are valid input strings:
 
