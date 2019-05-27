@@ -13,7 +13,7 @@ Source -> Lexer -> Parser
 
 ### Context-free Grammar
 
-The following CFG describes all possible arithmetic strings that can be parsed. It uses PEMDAS order of operations and associates to the left.
+The following CFG describes all possible arithmetic strings that can be parsed. It uses PEMDAS order of operations and associates to the left. For an example, a chain of minus operations would be evaluated like (((((9-8)-7)-6)-5)).
 
 Expression -> Expression - Add
 <br>Expression -> Add
