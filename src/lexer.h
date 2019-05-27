@@ -19,7 +19,7 @@ class Lexer {
     int identify();
 
   private:
-    Source * source;
+    Source* source;
     char c;             // current character
     double lexeme;      // the value of a term in the expression (float or int)
     int token;          // the current token

@@ -16,7 +16,8 @@ int main() {
     exit = strcmp(input, "exit") && strcmp(input, "quit");
     if(exit) {
       lexer.start();    // read in first char and token
-      std::cout << "= " << parser.expr() << "\n\n";
+      Expression* e = parser.expr();
+      std::cout << "= " << e->evaluate() << "\n\n";
     }
   } while(exit);
 

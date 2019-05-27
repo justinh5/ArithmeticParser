@@ -1,6 +1,4 @@
-#include <iostream>
-#include <cstring>
-#include <math.h>
+#include "AST.h"
 
 
 // Holds the source string of user input and
@@ -11,10 +9,10 @@ class Source {
     Source();
     ~Source();
 
-    void read_source(char * input);
+    void read_source(char* input);
     int next_char();
 
   private:
-    char * input;    // source input
+    char* input;    // source input
     int position;    // current position in the input array
 };

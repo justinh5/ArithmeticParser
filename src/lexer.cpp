@@ -1,5 +1,6 @@
 #include "parser.h"
 
+
 // Default constructor
 Lexer::Lexer(): source(0), c(0), lexeme(0), token(0) {}
 

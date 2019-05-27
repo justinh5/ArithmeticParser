@@ -1,5 +1,5 @@
-
 #include "parser.h"
+
 
 Parser::Parser(): lexer(0) {}
 
@@ -7,61 +7,61 @@ Parser::Parser(Lexer* l) {
   lexer = l;
 }
 
-double Parser::expr() {
-  double l = add();
+Expression* Parser::expr() {
+  Expression* l = add();
   if (lexer->get_token() == SUB) {
     lexer->next_token();
-    return expr() - l;
+    return new Sub(expr(), l);
   }
   return l;
 }
 
-double Parser::add() {
-  double l = div();
+Expression* Parser::add() {
+  Expression* l = div();
   if (lexer->get_token() == ADD) {
     lexer->next_token();
-    return expr() + l;
+    return new Add(expr(), l);
   }
   return l;
 }
 
-double Parser::div() {
-  double l = mul();
+Expression* Parser::div() {
+  Expression* l = mul();
   if (lexer->get_token() == DIV) {
     lexer->next_token();
-    return expr() / l;
+    return new Div(expr(), l);
   }
   return l;
 }
 
-double Parser::mul() {
-  double l = exp();
+Expression* Parser::mul() {
+  Expression* l = exp();
   if (lexer->get_token() == MUL) {
     lexer->next_token();
-    return expr() * l;
+    return new Mul(expr(), l);
   }
   return l;
 }
 
-double Parser::exp() {
-  double l = term();
+Expression* Parser::exp() {
+  Expression* l = term();
   if (lexer->get_token() == EXP) {
     lexer->next_token();
-    return pow(expr(), l);
+    return new Exp(expr(), l);
   }
   return l;
 }
 
-double Parser::term() {
+Expression* Parser::term() {
   switch (lexer->get_token()) {
     case NUM: {
       double value = lexer->get_lexeme();
       lexer->next_token();
-      return value;
+      return new Num(value);
     }
     case CLOSE: {
       lexer->next_token();
-      double e = expr();
+      Expression* e = expr();
       if (lexer->get_token() == '(') {
         lexer->next_token();
       } else {

@@ -24,35 +24,13 @@ class Parser {
     Parser();
     Parser(Lexer* l);
 
-    double expr();
-    double add();
-    double div();
-    double mul();
-    double exp();
-    double term();
+    Expression* expr();
+    Expression* add();
+    Expression* div();
+    Expression* mul();
+    Expression* exp();
+    Expression* term();
 
   private:
-    Lexer * lexer;
+    Lexer* lexer;
 };
-
-
-
-
-/* If we wanted to build an AST data structure, we could
-   declare the following classes:
-
-   class Expression {
-     public:
-       Expression();
-       virtual double evaluate() = 0;
-   }
-
-   class Sub: Expression {}
-   class Add: Expression {}
-   class Div: Expression {}
-   class Mul: Expression {}
-   class Exp: Expression {}
-   class Num: Expression {}
-
-
-*/
