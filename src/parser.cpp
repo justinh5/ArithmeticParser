@@ -20,7 +20,7 @@ Expression* Parser::add() {
   Expression* l = div();
   if (lexer->get_token() == ADD) {
     lexer->next_token();
-    return new Add(expr(), l);
+    return new Add(div(), l);
   }
   return l;
 }
@@ -29,7 +29,7 @@ Expression* Parser::div() {
   Expression* l = mul();
   if (lexer->get_token() == DIV) {
     lexer->next_token();
-    return new Div(expr(), l);
+    return new Div(mul(), l);
   }
   return l;
 }
@@ -38,7 +38,7 @@ Expression* Parser::mul() {
   Expression* l = exp();
   if (lexer->get_token() == MUL) {
     lexer->next_token();
-    return new Mul(expr(), l);
+    return new Mul(exp(), l);
   }
   return l;
 }
@@ -47,7 +47,7 @@ Expression* Parser::exp() {
   Expression* l = term();
   if (lexer->get_token() == EXP) {
     lexer->next_token();
-    return new Exp(expr(), l);
+    return new Exp(term(), l);
   }
   return l;
 }
