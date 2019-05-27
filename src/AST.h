@@ -9,6 +9,7 @@ class Expression {
 
   public:
     Expression();
+    virtual~Expression();
 
     virtual double evaluate() = 0;
 };
@@ -18,6 +19,7 @@ class Sub: public Expression {
 
   public:
     Sub();
+    ~Sub();
     Sub(Expression* right, Expression* left);
 
     double evaluate();
@@ -32,6 +34,7 @@ class Add: public Expression {
 
   public:
     Add();
+    ~Add();
     Add(Expression* right, Expression* left);
 
     double evaluate();
@@ -46,6 +49,7 @@ class Div: public Expression {
 
   public:
     Div();
+    ~Div();
     Div(Expression* right, Expression* left);
 
     double evaluate();
@@ -60,6 +64,7 @@ class Mul: public Expression {
 
   public:
     Mul();
+    ~Mul();
     Mul(Expression* right, Expression* left);
 
     double evaluate();
@@ -74,6 +79,7 @@ class Exp: public Expression {
 
   public:
     Exp();
+    ~Exp();
     Exp(Expression* right, Expression* left);
 
     double evaluate();
@@ -88,6 +94,7 @@ class Num: public Expression {
 
   public:
     Num();
+    ~Num();
     Num(double value);
 
     double evaluate();
