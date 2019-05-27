@@ -8,7 +8,7 @@ Source -> Lexer -> Parser
 
 **Source** - Manages the input buffer of characters.
 <br>**Lexer** - Reads in characters from the source and outputs tokens. Tokens are read from right to left to maintain a left grouping. White space is skipped.
-<br>**Parser** - Reads tokens from the lexer using recursive descent parsing to follow the precedence and associativity of the CFG. It does not produce an AST data structure. Instead, the expressions are directly evaluated, starting from the leaves upwards.
+<br>**Parser** - Reads tokens from the lexer using recursive descent parsing to follow the precedence and associativity of the CFG. It produces an AST data structure, where the expression it represents can be evaluated.
 
 
 ### Context-free Grammar
@@ -33,7 +33,7 @@ Exp -> Exp ^ Term
 Term -> (Expression)
 <br>Term -> n
 
-### Example
+### Examples
 
 Each of the following are valid input strings:
 
