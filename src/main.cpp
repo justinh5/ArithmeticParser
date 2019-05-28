@@ -29,6 +29,7 @@ int main() {
       lexer.start();    // read in first char and token
       Expression* e = parser.expr();
       std::cout << "= " << e->evaluate() << "\n\n";
+      delete e;
     }
   } while(exit);
 
