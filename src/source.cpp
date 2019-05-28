@@ -1,8 +1,15 @@
+/*
+Author: Justin Haupt
+Filename: source.cpp
+
+This file contains functions for the Source class.
+The input is obtained through standard input.
+*/
+
+
 #include "source.h"
 
 
-
-// Default constructor
 Source::Source(): input(0), position(0) {}
 
 Source::~Source() {

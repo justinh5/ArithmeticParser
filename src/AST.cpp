@@ -1,4 +1,15 @@
-#include "AST.h"
+/*
+Author: Justin Haupt
+Filename: ast.cpp
+
+This file contains functions for the AST classes.
+All the derived classes override one function called
+'evaluate', which uses the corresponding operator on
+their contained epxressions. 
+*/
+
+
+#include "ast.h"
 
 
 Expression::Expression() {}

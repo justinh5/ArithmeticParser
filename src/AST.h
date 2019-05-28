@@ -1,10 +1,24 @@
+/*
+Author: Justin Haupt
+Filename: ast.h
+
+This file contains a hierarchy of classes for an AST data structure.
+There is a derived class for each operation, + - * / ^ n, and the only
+function they contain is called 'evaluate', which uses the corresponding
+operator on their contained operand expressions.
+
+Inheritance structure
+=======================================
+Base class: Expression
+Derived from Expression: Add, Sub, Div, Mul, Num
+*/
+
+
 #include <iostream>
 #include <cstring>
 #include <math.h>
 
 
-// A hierarchy of classes for an AST data structure.
-// There is a derived class for each operation, + - * / ^ n
 class Expression {
 
   public:

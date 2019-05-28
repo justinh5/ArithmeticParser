@@ -1,3 +1,15 @@
+/*
+Author: Justin Haupt
+Filename: lexer.cpp
+
+This file contains functions for the Lexer class.
+There are functions for reading the next token from the source,
+getting the current token or lexeme, and identifying lexemes.
+
+TODO: Identify garbage input and return with an error.
+*/
+
+
 #include "parser.h"
 
 

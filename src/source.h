@@ -1,8 +1,15 @@
-#include "AST.h"
+/*
+Author: Justin Haupt
+Filename: source.h
+
+The source holds the string of user input and provides
+the next character in the buffer for the lexer.
+*/
 
 
-// Holds the source string of user input and
-// provides the next character in the buffer for the lexer.
+#include "ast.h"
+
+
 class Source {
 
   public:
@@ -13,6 +20,6 @@ class Source {
     int next_char();
 
   private:
-    char* input;    // source input
+    char* input;     // source input
     int position;    // current position in the input array
 };

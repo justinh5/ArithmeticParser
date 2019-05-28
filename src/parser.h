@@ -1,3 +1,14 @@
+/*
+Author: Justin Haupt
+Filename: parser.h
+
+The Parser reads tokens from the lexer using recursive descent parsing
+to follow the precedence and associativity of the CFG. Each function
+returns an Expression ADT, which build an AST data structure of expressions.
+Constants are also defined in this file.
+*/
+
+
 #include "lexer.h"
 
 // Constants
@@ -15,9 +26,6 @@ const int CLOSE = 41;
 const int NUM = 100;
 
 
-
-// Reads tokens from the lexer using recursive descent parsing
-// to follow the precedence and associativity of the CFG.
 class Parser {
 
   public:

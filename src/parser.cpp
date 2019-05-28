@@ -1,3 +1,13 @@
+/*
+Author: Justin Haupt
+Filename: parser.cpp
+
+This file contains functions for the Parser class.
+The functions are recursively descending to match the
+grammar, and each one returns an Expression ADT.
+*/
+
+
 #include "parser.h"
 
 
