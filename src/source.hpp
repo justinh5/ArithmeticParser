@@ -16,7 +16,7 @@ class Source {
     Source();
     ~Source();
 
-    void read_source(char* input);
+    int read_source(char* input);
     int next_char();
 
   private:

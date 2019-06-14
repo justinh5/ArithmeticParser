@@ -18,7 +18,7 @@ class Lexer {
     Lexer();
     Lexer(Source* s);
 
-    void start();
+    int start();
     int get_token();
     double get_lexeme();
     int next_token();
