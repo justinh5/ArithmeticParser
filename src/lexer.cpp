@@ -21,9 +21,10 @@ Lexer::Lexer(Source* s): c(0), lexeme(0), token(0) {
 }
 
 // Read in the first character and token before parsing
-void Lexer::start() {
+int Lexer::start() {
   c = source->next_char();
   token = next_token();
+  return 1;
 }
 
 // Read the input for the next token

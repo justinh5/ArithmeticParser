@@ -20,7 +20,7 @@ Source::~Source() {
 // Reads in a new source of raw characters.
 // First deletes the previous set of characters,
 // then copies in the new set from user input.
-void Source::read_source(char * usr_input) {
+int Source::read_source(char * usr_input) {
   if(input)
       delete [] input;
 
@@ -29,6 +29,7 @@ void Source::read_source(char * usr_input) {
 
   // reset position back to the last character
   position = strlen(input)-1;
+  return 1;
 }
 
 // Returns the next character from the input buffer,
