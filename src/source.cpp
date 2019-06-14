@@ -7,7 +7,7 @@ The input is obtained through standard input.
 */
 
 
-#include "source.h"
+#include "source.hpp"
 
 
 Source::Source(): input(0), position(0) {}

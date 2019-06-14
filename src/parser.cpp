@@ -8,7 +8,7 @@ grammar, and each one returns an Expression ADT.
 */
 
 
-#include "parser.h"
+#include "parser.hpp"
 
 
 Parser::Parser(): lexer(0) {}

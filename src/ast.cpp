@@ -5,11 +5,11 @@ Filename: ast.cpp
 This file contains functions for the AST classes.
 All the derived classes override one function called
 'evaluate', which uses the corresponding operator on
-their contained epxressions. 
+their contained epxressions.
 */
 
 
-#include "ast.h"
+#include "ast.hpp"
 
 
 Expression::Expression() {}
